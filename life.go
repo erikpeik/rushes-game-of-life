@@ -4,12 +4,10 @@ import (
 	"bufio"
 	"fmt"
 	"log"
-	"math/rand"
 	"os"
 	"runtime/debug"
 	"strconv"
 	"strings"
-	"time"
 )
 
 func print_array(array [][]int, height int, width int) {
@@ -35,23 +33,6 @@ func is_in_bound(x int, y int, width int, height int, arr [][]int) bool {
 		return true
 	} else {
 		return false
-	}
-}
-
-func insert(cell int, x int, y int, width int, height int, arr [][]int) {
-	if is_in_bound(x, y, width, height, arr) {
-		arr[y][x] = cell
-	} else {
-		print("out of bound")
-	}
-}
-
-func populate_map(arr [][]int, width int, height int) {
-	for i := 0; i < height; i++ {
-		for j := 0; j < width; j++ {
-			rand.Seed(time.Now().UnixNano())
-			arr[i][j] = rand.Intn(2)
-		}
 	}
 }
 

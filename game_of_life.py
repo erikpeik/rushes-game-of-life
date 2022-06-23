@@ -20,7 +20,7 @@ def is_in_bound(x, y, width, height, arr):
 	else:
 		return False
 
-def check_neigbour(x, y, width, height, arr):
+def check_neighbour(x, y, width, height, arr):
 	num_of_live_neighbour = 0
 
 	if (is_in_bound(x, y+1, width, height, arr) and arr[x][y+1] == 1):
@@ -56,20 +56,20 @@ def full_check(width, heigth, arr):
 # Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
 def check_rules(x: int, y: int, width, height, map):
-	num_of_live_neigbours = check_neigbour(x, y, width, height, map)
+	num_of_live_neighbours = check_neighbour(x, y, width, height, map)
 	changes = []
 	#born rule
-	if (num_of_live_neigbours == 3 and map[x][y] == 0):
+	if (num_of_live_neighbours == 3 and map[x][y] == 0):
 		par = [x, y, 1]
 		changes.append(par)
 
 	#underpopulation rule
-	if (num_of_live_neigbours < 2 and map[x][y] == 1):
+	if (num_of_live_neighbours < 2 and map[x][y] == 1):
 		par = [x, y, 0]
 		changes.append(par)
 
 	#overpopulate rule
-	if (num_of_live_neigbours > 3 and map[x][y] == 1):
+	if (num_of_live_neighbours > 3 and map[x][y] == 1):
 		par = [x, y, 0]
 		changes.append(par)
 	return changes
